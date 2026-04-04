@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Résultats de Éliniaise</title>
+    <title>Résultats de Élinaise</title>
     <style>
         body {
             margin: 0;
@@ -11,7 +11,7 @@
             font-family: 'Arial', sans-serif;
             background: url('https://img.freepik.com/photos-gratuite/enfants-jouant-herbe_1098-504.jpg?semt=ais_hybrid&w=740&q=80') no-repeat center center fixed;
             background-size: cover;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -35,53 +35,64 @@
         .container {
             position: relative;
             z-index: 1;
+            width: 90%;
+            max-width: 800px;
+            padding: 1rem;
         }
 
         h1 {
-            font-size: 4rem;
-            margin-bottom: 2rem;
+            font-size: clamp(2rem, 8vw, 4rem);
+            margin-bottom: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
 
         .countdown {
-            font-size: 2.5rem;
-            display: flex;
-            gap: 1rem;
+            font-size: 1.2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 0.7rem;
+            width: 100%;
         }
 
         .countdown-item {
             background-color: rgba(0, 0, 0, 0.7);
-            padding: 1rem;
+            padding: 0.8rem;
             border-radius: 8px;
-            min-width: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-value {
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
+            font-weight: bold;
         }
 
         .countdown-label {
-            font-size: 1rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            margin-top: 0.5rem;
-            display: block;
+            margin-top: 0.3rem;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Résultats de Éliniaise</h1>
+        <h1>Résultats de Élinaise</h1>
         <div class="countdown" id="countdown">
             <div class="countdown-item">
-                <span id="days">00</span>
+                <span class="countdown-value" id="days">00</span>
                 <span class="countdown-label">Jours</span>
             </div>
             <div class="countdown-item">
-                <span id="hours">00</span>
+                <span class="countdown-value" id="hours">00</span>
                 <span class="countdown-label">Heures</span>
             </div>
             <div class="countdown-item">
-                <span id="minutes">00</span>
+                <span class="countdown-value" id="minutes">00</span>
                 <span class="countdown-label">Minutes</span>
             </div>
             <div class="countdown-item">
-                <span id="seconds">00</span>
+                <span class="countdown-value" id="seconds">00</span>
                 <span class="countdown-label">Secondes</span>
             </div>
         </div>
