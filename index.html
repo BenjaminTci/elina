@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats de Éliniaise</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('https://img.freepik.com/photos-gratuite/enfants-jouant-herbe_1098-504.jpg?semt=ais_hybrid&w=740&q=80') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .countdown {
+            font-size: 2.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .countdown-item {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 120px;
+        }
+
+        .countdown-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Résultats de Éliniaise</h1>
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <span id="days">00</span>
+                <span class="countdown-label">Jours</span>
+            </div>
+            <div class="countdown-item">
+                <span id="hours">00</span>
+                <span class="countdown-label">Heures</span>
+            </div>
+            <div class="countdown-item">
+                <span id="minutes">00</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span id="seconds">00</span>
+                <span class="countdown-label">Secondes</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            const targetDate = new Date('2026-04-20T19:00:00');
+
+            const diff = targetDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
